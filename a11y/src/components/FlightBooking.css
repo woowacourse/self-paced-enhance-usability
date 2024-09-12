@@ -1,0 +1,63 @@
+.flight-booking {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flight-booking h2 {
+  margin-bottom: 16px;
+}
+
+.passenger-label {
+  display: flex;
+  align-items: center;
+}
+
+.passenger-count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.passenger-count span {
+  font-weight: 700;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+}
+
+.counter button {
+  width: 30px;
+  height: 30px;
+  border-radius: 16px;
+  border: 1px solid #C0C0C0;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter span {
+  font-size: 18px;
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 0 16px;
+}
+
+.search-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

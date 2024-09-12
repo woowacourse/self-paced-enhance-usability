@@ -1,0 +1,18 @@
+.app {
+  font-family: Arial, sans-serif;
+  max-width: 480px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.app-main {
+  flex: 1;
+}
+
+.flight-booking-container {
+  padding: 26px 24px;
+}
