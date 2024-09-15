@@ -46,3 +46,35 @@
   - 선택 : 플러스
 - 항공편 검색 버튼
   - 선택 : 항공편 검색
+
+## 개선 과정
+
+1. `index.html`에 `lang` 속성 설정
+
+- [x] lang='ko' 설정
+
+2. App.tsx 시멘틱 태그 작성
+
+- [x] main, section 수정
+
+3. 버튼 접근성 향상
+
+- 승객 감소/추가 버튼에 의미 있는 레이블을 추가하여, 각 버튼의 기능을 명확히 이해할 수 있도록 레이블 설정
+- [x] 증가/감소 버튼에 `aria-label` 추가
+
+4. 변경 사항에 대한 실시간 알림 추가
+
+- [x] 버튼을 클릭할 때 승객 수 변경 사항을 모바일 낭독기를 통해 실시간으로 '들을' 수 있도록 설정
+- `assertive` : aria-live 속성을 추가한 태그의 children 변경 사항을 즉시 알림. 읽고 있던 VoiceOver(현재 작업)를 중단하고 변경된 값을 알림.
+- `polite` : 읽고 있던 VoiceOver를 모두 읽고 난 후 변경 사항을 알림.
+
+5. 최소/최대 값 도달 시 상태 메시지 알림 추가하기
+
+- [x] visually-hidden 과 role 을 사용하여 상태 메시지 알림 추가
+- `visually-hidden` : 시각 사용자에겐 보이지 않지만, 모바일 낭독기로는 들을 수 있는 텍스트 추가
+- visually-hidden 처리해놓은 상태 메시지 알림을 버튼 클릭했을 때 들으려면 screenReaderMessage가 있는 태그에 aria-live 속성 추가해야함
+- aria-live 대신 적절한 role 속성을 추가하여 이를 대체할 수 있음
+- `role: 'alert'` : aria-live="assertive" + aria-atomic="true"
+  - 유효하지 않은 입력
+  - 유저 로그인 세션 만료
+  - 서버와 연결이 끊겨 변경 사항 저장 안된 상태
