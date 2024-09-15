@@ -6,12 +6,24 @@ const MAX_PASSENGERS = 3;
 
 const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(1);
+  const [screenReaderMessage, setScreenReaderMessage] = useState("");
 
   const incrementCount = () => {
+    if (adultCount === 3) {
+      setScreenReaderMessage("최대 승객 수에 도달했습니다.");
+      return;
+    }
+
+    setScreenReaderMessage("");
     setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
   };
 
   const decrementCount = () => {
+    if (adultCount === 1) {
+      setScreenReaderMessage("최소 승객 수에 도달했습니다.");
+      return;
+    }
+    setScreenReaderMessage("");
     setAdultCount((prev) => Math.max(1, prev - 1));
   };
 
@@ -36,6 +48,11 @@ const FlightBooking = () => {
           >
             +
           </button>
+          {screenReaderMessage && (
+            <span className="visually-hidden" role="alert">
+              {screenReaderMessage}
+            </span>
+          )}
         </div>
       </div>
       <button className="search-button">항공편 검색</button>
