@@ -34,7 +34,7 @@
   width: 30px;
   height: 30px;
   border-radius: 16px;
-  border: 1px solid #C0C0C0;
+  border: 1px solid #c0c0c0;
   background-color: #fff;
   cursor: pointer;
   display: flex;
@@ -60,4 +60,18 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.disabled {
+  opacity: 0.3;
 }
