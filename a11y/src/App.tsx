@@ -1,16 +1,19 @@
-import "./Typography.css";
-import "./App.css";
+import './Typography.css';
+import './App.css';
 
-import FlightBooking from "./components/FlightBooking";
+import FlightBooking from './components/FlightBooking';
 
 function App() {
   return (
-    <div className="app">
-      <div className="app-main">
-        <div className="flight-booking-container">
+    <div className='app'>
+      <main className='app-main'>
+        <article className='flight-booking-container'>
+          <header>
+            <h1 className='heading-1-text'>Wooteco Air</h1>
+          </header>
           <FlightBooking />
-        </div>
-      </div>
+        </article>
+      </main>
     </div>
   );
 }
