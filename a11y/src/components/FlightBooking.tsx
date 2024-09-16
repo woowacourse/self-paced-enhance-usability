@@ -1,17 +1,42 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './FlightBooking.css';
 
 const MAX_PASSENGERS = 3;
+const MIN_PASSENGERS = 1;
+
+const STATUS_MESSAGES = {
+  max: '최대 승객 수에 도달했습니다',
+  min: '최소 1명의 승객이 필요합니다',
+};
 
 const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(1);
+  const [statusMessage, setStatusMessage] = useState('');
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setStatusMessage('');
+    }, 0);
+
+    return () => clearTimeout(timer);
+  });
 
   const incrementCount = () => {
+    if (adultCount === MAX_PASSENGERS) {
+      setStatusMessage(STATUS_MESSAGES.max);
+      return;
+    }
+
     setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
   };
 
   const decrementCount = () => {
+    if (adultCount === MIN_PASSENGERS) {
+      setStatusMessage(STATUS_MESSAGES.min);
+      return;
+    }
+
     setAdultCount((prev) => Math.max(1, prev - 1));
   };
 
@@ -25,6 +50,11 @@ const FlightBooking = () => {
             -
           </button>
           <span aria-live="polite">{adultCount}</span>
+          {statusMessage && (
+            <span role="alert" className="visually-hidden">
+              {statusMessage}
+            </span>
+          )}
           <button className="button-text" aria-label="성인 승객 증가" onClick={incrementCount}>
             +
           </button>
