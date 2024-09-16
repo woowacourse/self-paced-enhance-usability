@@ -21,16 +21,26 @@ const FlightBooking = () => {
       <div className='passenger-count'>
         <span className='body-text'>성인</span>
         <div className='counter'>
-          <button className='button-text' onClick={decrementCount}>
+          <button
+            aria-label='성인 승객 감소'
+            className='button-text'
+            onClick={decrementCount}
+          >
             -
           </button>
           <span>{adultCount}</span>
-          <button className='button-text' onClick={incrementCount}>
+          <button
+            aria-label='성인 승객 증가'
+            className='button-text'
+            onClick={incrementCount}
+          >
             +
           </button>
         </div>
       </div>
-      <button className='search-button'>항공편 검색</button>
+      <button role='button' className='search-button'>
+        항공편 검색
+      </button>
     </section>
   );
 };
