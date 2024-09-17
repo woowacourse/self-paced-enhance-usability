@@ -16,10 +16,11 @@ const FlightBooking = () => {
 
   const incrementCount = () => {
     if (adultCount === MAX_PASSENGERS) {
-      setStatusMessage(STATUS_MESSAGE.max);
-      return;
-    } else {
       setStatusMessage('');
+      setTimeout(() => {
+        setStatusMessage(STATUS_MESSAGE.max);
+      }, 0);
+      return;
     }
 
     setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
@@ -27,10 +28,11 @@ const FlightBooking = () => {
 
   const decrementCount = () => {
     if (adultCount === MIN_PASSENGERS) {
-      setStatusMessage(STATUS_MESSAGE.min);
-      return;
-    } else {
       setStatusMessage('');
+      setTimeout(() => {
+        setStatusMessage(STATUS_MESSAGE.min);
+      }, 0);
+      return;
     }
 
     setAdultCount((prev) => Math.max(MIN_PASSENGERS, prev - 1));
