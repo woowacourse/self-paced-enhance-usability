@@ -1,19 +1,30 @@
-import { useState } from "react";
-
 import "./FlightBooking.css";
+import { useCounter } from "../hooks/useCounter";
 
+const MIN_PASSENGERS = 1;
 const MAX_PASSENGERS = 3;
 
+const ALERT_MESSAGE = {
+  min: "최소 승객 수에 도달했습니다.",
+  max: "최대 승객 수에 도달했습니다.",
+};
+
 const FlightBooking = () => {
-  const [adultCount, setAdultCount] = useState(1);
-
-  const incrementCount = () => {
-    setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
-  };
-
-  const decrementCount = () => {
-    setAdultCount((prev) => Math.max(1, prev - 1));
-  };
+  const {
+    count: adultCount,
+    alertMessage,
+    decrementCount,
+    incrementCount,
+  } = useCounter({
+    min: {
+      value: MIN_PASSENGERS,
+      alertMessage: ALERT_MESSAGE.min,
+    },
+    max: {
+      value: MAX_PASSENGERS,
+      alertMessage: ALERT_MESSAGE.max,
+    },
+  });
 
   return (
     <article className="flight-booking">
@@ -29,6 +40,11 @@ const FlightBooking = () => {
             +
           </button>
         </section>
+        {alertMessage && (
+          <span className="visually-hidden" role="alert">
+            {alertMessage}
+          </span>
+        )}
       </div>
       <button className="search-button">항공편 검색</button>
     </article>
