@@ -8,9 +8,16 @@ const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(1);
   const [alertMessage, setAlertMessage] = useState('');
 
+  const updateAlert = (message: string) => {
+    setAlertMessage('');
+    setTimeout(() => {
+      setAlertMessage(message);
+    }, 0);
+  };
+
   const incrementCount = () => {
     if (adultCount === MAX_PASSENGERS) {
-      setAlertMessage('최대 승객 수에 도달하였습니다.');
+      updateAlert('최대 승객 수에 도달하였습니다.');
       return;
     }
 
@@ -19,7 +26,7 @@ const FlightBooking = () => {
 
   const decrementCount = () => {
     if (adultCount === 1) {
-      setAlertMessage('최소 승객 수에 도달하였습니다.');
+      updateAlert('최소 승객 수에 도달하였습니다.');
       return;
     }
 
