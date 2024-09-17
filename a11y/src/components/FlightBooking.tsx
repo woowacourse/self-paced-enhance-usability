@@ -16,11 +16,11 @@ const FlightBooking = () => {
   };
 
   return (
-    <div className="flight-booking">
-      <h2 className="heading-2-text">항공권 예매</h2>
+    <article className="flight-booking">
+      <h1 className="heading-2-text">항공권 예매</h1>
       <div className="passenger-count">
         <span className="body-text">성인</span>
-        <div className="counter">
+        <section className="counter">
           <button className="button-text" onClick={decrementCount}>
             -
           </button>
@@ -28,10 +28,10 @@ const FlightBooking = () => {
           <button className="button-text" onClick={incrementCount}>
             +
           </button>
-        </div>
+        </section>
       </div>
       <button className="search-button">항공편 검색</button>
-    </div>
+    </article>
   );
 };
 
