@@ -28,7 +28,7 @@ const FlightBooking = () => {
           >
             -
           </button>
-          <span>{adultCount}</span>
+          <span aria-live='polite'>{adultCount}</span>
           <button
             aria-label='성인 승객 증가'
             className='button-text'
@@ -38,9 +38,7 @@ const FlightBooking = () => {
           </button>
         </div>
       </div>
-      <button role='button' className='search-button'>
-        항공편 검색
-      </button>
+      <button className='search-button'>항공편 검색</button>
     </section>
   );
 };
