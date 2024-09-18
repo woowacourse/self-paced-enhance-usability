@@ -19,7 +19,9 @@ const FlightBooking = () => {
     <div className="flight-booking">
       <h2 className="heading-2-text">항공권 예매</h2>
       <div className="passenger-count">
-        <span className="body-text">성인</span>
+        <label htmlFor="adult-counter" className="body-text">
+          성인
+        </label>
         <div className="counter">
           <button
             className="button-text"
@@ -28,7 +30,7 @@ const FlightBooking = () => {
           >
             -
           </button>
-          <span>{adultCount}</span>
+          <span aria-live="polite">{adultCount}</span>
           <button
             className="button-text"
             onClick={incrementCount}
