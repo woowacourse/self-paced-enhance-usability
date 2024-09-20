@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import "./FlightBooking.css";
+import './FlightBooking.css';
 
 const MAX_PASSENGERS = 3;
 const MIN_PASSENGERS = 1;
@@ -29,7 +29,9 @@ const FlightBooking = () => {
 
   return (
     <div className="flight-booking">
-      <h2 className="heading-2-text">항공권 예매</h2>
+      <h2 className="heading-2-text" role="none">
+        항공권 예매
+      </h2>
       <div className="passenger-count">
         <span className="body-text">성인</span>
         <div className="counter">
