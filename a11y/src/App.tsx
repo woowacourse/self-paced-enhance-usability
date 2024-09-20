@@ -5,9 +5,9 @@ import FlightBooking from "./components/FlightBooking";
 
 function App() {
   return (
-    <div className="app app-main flight-booking-container">
+    <main className="app app-main flight-booking-container">
       <FlightBooking />
-    </div>
+    </main>
   );
 }
 
