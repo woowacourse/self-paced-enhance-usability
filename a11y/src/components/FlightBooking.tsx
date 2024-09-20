@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import "./FlightBooking.css";
+import './FlightBooking.css';
 
 const MAX_PASSENGERS = 3;
 
@@ -28,8 +28,6 @@ const FlightBooking = () => {
           >
             -
           </button>
-          <span>{adultCount}</span>
-          <button className="button-text" onClick={incrementCount}>
           <span aria-live="polite">{adultCount}</span>
           <button
             className="button-text"
