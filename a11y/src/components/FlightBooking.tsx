@@ -29,7 +29,7 @@ const FlightBooking = () => {
 
   return (
     <div className="flight-booking">
-      <h2 className="heading-2-text" role="none">
+      <h2 className="heading-2-text" role="presentation">
         항공권 예매
       </h2>
       <div className="passenger-count">
