@@ -43,7 +43,7 @@ const FlightBooking = () => {
           >
             -
           </button>
-          <span role="status" aria-live="polite">
+          <span role="status" aria-live="assertive">
             {adultCount}
           </span>
           <button
@@ -56,7 +56,7 @@ const FlightBooking = () => {
         </div>
       </div>
       {statusMessage && (
-        <div className="visually-hidden" role="alert" aria-live="polite">
+        <div className="visually-hidden" role="alert" aria-live="assertive">
           {statusMessage}
         </div>
       )}
