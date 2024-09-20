@@ -28,27 +28,41 @@ const FlightBooking = () => {
 
   return (
     <div className="flight-booking">
-      <h2 className="heading-2-text">항공권 예매</h2>
+      <h2 className="heading-2-text" aria-label="항공권 예매">
+        항공권 예매
+      </h2>
       <div className="passenger-count">
-        <span className="body-text">성인</span>
+        <span className="body-text" aria-label="성인">
+          성인
+        </span>
         <div className="counter">
-          <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
+          <button
+            className="button-text"
+            onClick={decrementCount}
+            aria-label="성인 승객 1 감소"
+          >
             -
           </button>
           <span role="status" aria-live="polite">
             {adultCount}
           </span>
-          <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
+          <button
+            className="button-text"
+            onClick={incrementCount}
+            aria-label="성인 승객 1 증가"
+          >
             +
           </button>
         </div>
       </div>
       {statusMessage && (
-        <div className="visually-hidden" role="alert">
+        <div className="visually-hidden" role="alert" aria-live="polite">
           {statusMessage}
         </div>
       )}
-      <button className="search-button">항공편 검색</button>
+      <button className="search-button" aria-label="항공편 검색">
+        항공편 검색
+      </button>
     </div>
   );
 };
