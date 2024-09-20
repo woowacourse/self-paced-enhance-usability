@@ -40,6 +40,7 @@ const FlightBooking = () => {
             className="button-text"
             onClick={decrementCount}
             aria-label="성인 승객 1 감소"
+            type="button"
           >
             -
           </button>
@@ -50,17 +51,23 @@ const FlightBooking = () => {
             className="button-text"
             onClick={incrementCount}
             aria-label="성인 승객 1 증가"
+            type="button"
           >
             +
           </button>
         </div>
       </div>
       {statusMessage && (
-        <div className="visually-hidden" role="alert" aria-live="assertive">
+        <div
+          className="visually-hidden"
+          role="alert"
+          aria-live="assertive"
+          key={statusMessage}
+        >
           {statusMessage}
         </div>
       )}
-      <button className="search-button" aria-label="항공편 검색">
+      <button className="search-button" aria-label="항공편 검색" type="submit">
         항공편 검색
       </button>
     </div>
