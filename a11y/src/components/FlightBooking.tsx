@@ -19,9 +19,9 @@ const FlightBooking = () => {
 
   return (
     <section className="flight-booking">
-      <h2 className="heading-2-text">항공권 예매</h2>
+      <h1 className="heading-1-text">항공권 예매</h1>
       <form id={formId} className="passenger-count">
-        <h3 className="body-text">성인</h3>
+        <h2 className="body-text">성인</h2>
         <div className="counter">
           <button
             type="button"
