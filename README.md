@@ -19,7 +19,3 @@
 ```
 
 ## 웹 접근성 개선
-
-<video controls  width="500">
-  <source src="./useAbliityResult.mp4" type="video/mp4">
-</video>
