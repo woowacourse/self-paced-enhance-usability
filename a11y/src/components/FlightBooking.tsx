@@ -3,19 +3,49 @@ import { useId, useState } from "react";
 import "./FlightBooking.css";
 
 const MAX_PASSENGERS = 3;
+const MIN_PASSENGERS = 1;
+const STEP = 1;
+
+const COUNT_ERROR_MESSAGE = {
+  min: "최소 승객 수에 도달했습니다",
+  max: "최대 승객 수에 도달했습니다",
+};
 
 const FlightBooking = () => {
-  const [adultCount, setAdultCount] = useState(1);
+  const [adultCount, setAdultCount] = useState(MIN_PASSENGERS);
+  const [countError, setCountError] = useState<
+    keyof typeof COUNT_ERROR_MESSAGE | undefined
+  >(undefined);
+
+  const formId = `passenger-count-form-${useId()}`;
+
+  const updateCountError = (count: number) => {
+    if (count > MAX_PASSENGERS) {
+      return setCountError("max");
+    }
+    if (count < MIN_PASSENGERS) {
+      return setCountError("min");
+    }
+    return setCountError(undefined);
+  };
 
   const incrementCount = () => {
-    setAdultCount(prev => Math.min(MAX_PASSENGERS, prev + 1));
+    setAdultCount(prev => {
+      const newCount = prev + STEP;
+      updateCountError(newCount);
+
+      return Math.min(MAX_PASSENGERS, newCount);
+    });
   };
 
   const decrementCount = () => {
-    setAdultCount(prev => Math.max(1, prev - 1));
-  };
+    setAdultCount(prev => {
+      const newCount = prev - STEP;
+      updateCountError(newCount);
 
-  const formId = `passenger-count-form-${useId()}`;
+      return Math.max(MIN_PASSENGERS, newCount);
+    });
+  };
 
   return (
     <section className="flight-booking">
@@ -44,6 +74,12 @@ const FlightBooking = () => {
           </button>
         </div>
       </form>
+      <div className="count-error-message-wrapper">
+        <p className={countError ? "" : "visually-hidden"} role="status">
+          {countError && COUNT_ERROR_MESSAGE[countError]}
+        </p>
+      </div>
+
       <button form={formId} type="submit" className="search-button">
         항공편 검색
       </button>
