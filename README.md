@@ -19,3 +19,7 @@
 ```
 
 ## 웹 접근성 개선
+
+
+https://github.com/user-attachments/assets/65021b3f-2dcb-4b7c-951b-7847bf800b2a
+
