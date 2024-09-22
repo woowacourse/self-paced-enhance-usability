@@ -6,11 +6,11 @@ import FlightBooking from './components/FlightBooking';
 function App() {
   return (
     <div className='app'>
-      <div className='app-main'>
+      <main className='app-main'>
         <section className='flight-booking-container'>
           <FlightBooking />
         </section>
-      </div>
+      </main>
     </div>
   );
 }
