@@ -6,12 +6,20 @@ const MAX_PASSENGERS = 3;
 
 const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(1);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+
+  const STATUS_MESSAGE = {
+    increase: "성인 승객 증가 ",
+    decrease: "성인 승객 감소 ",
+  };
 
   const incrementCount = () => {
+    setStatusMessage(STATUS_MESSAGE.increase);
     setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
   };
 
   const decrementCount = () => {
+    setStatusMessage(STATUS_MESSAGE.decrease);
     setAdultCount((prev) => Math.max(1, prev - 1));
   };
 
@@ -24,15 +32,18 @@ const FlightBooking = () => {
           <button
             className="button-text"
             onClick={decrementCount}
-            aria-label="성인 승객 감소"
+            aria-label={STATUS_MESSAGE.decrease}
           >
             -
           </button>
-          <span aria-live="assertive">{adultCount}</span>
+          <span aria-live="polite">
+            <span className="visually-hidden">{statusMessage}</span>
+            {adultCount}
+          </span>
           <button
             className="button-text"
             onClick={incrementCount}
-            aria-label="성인 승객 증가"
+            aria-label={STATUS_MESSAGE.increase}
           >
             +
           </button>
