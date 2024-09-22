@@ -42,6 +42,12 @@
   align-items: center;
 }
 
+.button-text.disabled {
+  background-color: #cccccc;
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
 .counter span {
   font-size: 18px;
   text-align: center;
