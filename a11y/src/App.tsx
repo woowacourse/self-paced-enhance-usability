@@ -1,7 +1,7 @@
 import "./Typography.css";
 import "./App.css";
 
-import FlightBooking from "./components/FlightBooking";
+import { FlightBooking } from "./components/index";
 
 function App() {
   return (
