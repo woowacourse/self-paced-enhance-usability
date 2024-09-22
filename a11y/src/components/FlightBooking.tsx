@@ -13,6 +13,7 @@ const FlightBooking = () => {
       setStatusMessage("최대 승객 수에 도달했습니다");
       return;
     }
+    setStatusMessage("");
 
     setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
   };
@@ -22,7 +23,7 @@ const FlightBooking = () => {
       setStatusMessage("최소 1명의 승객이 필요합니다");
       return;
     }
-
+    setStatusMessage("");
     setAdultCount((prev) => Math.max(1, prev - 1));
   };
 
@@ -44,7 +45,11 @@ const FlightBooking = () => {
           >
             -
           </button>
-          <span role="status" aria-live="assertive">
+          <span
+            role="status"
+            aria-label={`현재 성인 승객 ${adultCount}명`}
+            aria-live="assertive"
+          >
             {adultCount}
           </span>
           <button
@@ -63,6 +68,7 @@ const FlightBooking = () => {
           role="alert"
           aria-live="assertive"
           key={statusMessage}
+          tabIndex={-1}
         >
           {statusMessage}
         </div>
