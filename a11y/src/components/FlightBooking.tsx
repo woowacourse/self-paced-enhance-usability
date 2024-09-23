@@ -45,11 +45,7 @@ const FlightBooking = () => {
           >
             -
           </button>
-          <span
-            role="status"
-            aria-label={`현재 성인 승객 ${adultCount}명`}
-            aria-live="assertive"
-          >
+          <span role="status" aria-live="assertive">
             {adultCount}
           </span>
           <button
