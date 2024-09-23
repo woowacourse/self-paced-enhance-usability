@@ -7,25 +7,23 @@ const MIN_PASSENGERS = 1;
 
 const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(1);
-  const [adultCountMessage, setAdultCountMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const incrementCount = () => {
     if (adultCount === MAX_PASSENGERS) {
-      setAdultCountMessage('최대 승객 수에 도달했습니다.');
+      setErrorMessage('최대 승객 수에 도달했습니다.');
       return;
     }
 
-    setAdultCountMessage('');
     setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
   };
 
   const decrementCount = () => {
     if (adultCount === MIN_PASSENGERS) {
-      setAdultCountMessage('최소 승객 수에 도달했습니다.');
+      setErrorMessage('최소 승객 수에 도달했습니다.');
       return;
     }
 
-    setAdultCountMessage('');
     setAdultCount((prev) => Math.max(1, prev - 1));
   };
 
@@ -52,9 +50,9 @@ const FlightBooking = () => {
           </button>
         </div>
       </div>
-      {adultCountMessage && (
-        <div className="counter-msg" role="alert">
-          {adultCountMessage}
+      {errorMessage && (
+        <div className="visually-hidden" aria-live="assertive" role="alert">
+          {errorMessage}
         </div>
       )}
       <button className="search-button">항공편 검색</button>
