@@ -20,7 +20,7 @@ const FlightBooking = () => {
       <h2 className="heading-2-text">항공권 예매</h2>
       <div className="passenger-count">
         <span className="body-text">성인</span>
-        <div className="counter">
+        <div className="counter" aria-live="polite">
           <button
             type="button"
             className="button-text"
