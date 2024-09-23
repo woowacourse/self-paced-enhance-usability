@@ -28,7 +28,7 @@ const FlightBooking = () => {
           >
             -
           </button>
-          <span>{adultCount}</span>
+          <span aria-live="assertive">{adultCount}</span>
           <button
             className="button-text"
             aria-label="성인 승객 증가"
