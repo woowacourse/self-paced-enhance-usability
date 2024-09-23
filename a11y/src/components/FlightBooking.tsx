@@ -3,15 +3,29 @@ import { useState } from 'react';
 import './FlightBooking.css';
 
 const MAX_PASSENGERS = 3;
+const MIN_PASSENGERS = 1;
 
 const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(1);
+  const [adultCountMessage, setAdultCountMessage] = useState('');
 
   const incrementCount = () => {
+    if (adultCount === MAX_PASSENGERS) {
+      setAdultCountMessage('최대 승객 수에 도달했습니다.');
+      return;
+    }
+
+    setAdultCountMessage('');
     setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
   };
 
   const decrementCount = () => {
+    if (adultCount === MIN_PASSENGERS) {
+      setAdultCountMessage('최소 승객 수에 도달했습니다.');
+      return;
+    }
+
+    setAdultCountMessage('');
     setAdultCount((prev) => Math.max(1, prev - 1));
   };
 
@@ -24,7 +38,7 @@ const FlightBooking = () => {
           <button
             className="button-text"
             onClick={decrementCount}
-            aria-label="성인 1인 감소"
+            aria-label="성인 승객 감소"
           >
             -
           </button>
@@ -32,12 +46,17 @@ const FlightBooking = () => {
           <button
             className="button-text"
             onClick={incrementCount}
-            aria-label="성인 1인 추가"
+            aria-label="성인 승객 증가"
           >
             +
           </button>
         </div>
       </div>
+      {adultCountMessage && (
+        <div className="counter-msg" role="alert">
+          {adultCountMessage}
+        </div>
+      )}
       <button className="search-button">항공편 검색</button>
     </div>
   );
