@@ -1,19 +1,15 @@
-import { useState } from "react";
-
 import "./FlightBooking.css";
 
-const MAX_PASSENGERS = 3;
+import useAdultCount from "../hooks/useAdultCount";
 
 const FlightBooking = () => {
-  const [adultCount, setAdultCount] = useState(1);
-
-  const incrementCount = () => {
-    setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
-  };
-
-  const decrementCount = () => {
-    setAdultCount((prev) => Math.max(1, prev - 1));
-  };
+  const {
+    adultCount,
+    incrementCount,
+    decrementCount,
+    alertMessage,
+    messageForATUser,
+  } = useAdultCount();
 
   return (
     <div className="flight-booking">
@@ -21,15 +17,38 @@ const FlightBooking = () => {
       <div className="passenger-count">
         <span className="body-text">성인</span>
         <div className="counter">
-          <button className="button-text" onClick={decrementCount}>
+          <button
+            className="button-text"
+            onClick={decrementCount}
+            aria-label="성인 탑승자 한 명 늘리기"
+          >
             -
           </button>
+          {messageForATUser && (
+            <div
+              className="visually-hidden"
+              aria-live="polite"
+              aria-atomic="true"
+              aria-relevant="additions"
+            >
+              <p>{messageForATUser}</p>
+            </div>
+          )}
           <span>{adultCount}</span>
-          <button className="button-text" onClick={incrementCount}>
+          <button
+            className="button-text"
+            onClick={incrementCount}
+            aria-label="성인 탑승자 한 명 줄이기"
+          >
             +
           </button>
         </div>
       </div>
+      {alertMessage && (
+        <div className="visually-hidden" role="alert">
+          {alertMessage}
+        </div>
+      )}
       <button className="search-button">항공편 검색</button>
     </div>
   );
