@@ -34,7 +34,7 @@
   width: 30px;
   height: 30px;
   border-radius: 16px;
-  border: 1px solid #C0C0C0;
+  border: 1px solid #c0c0c0;
   background-color: #fff;
   cursor: pointer;
   display: flex;
@@ -45,11 +45,16 @@
 .counter span {
   font-size: 18px;
   text-align: center;
-  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   padding: 0 16px;
+}
+
+.help-text {
+  padding-bottom: 10px;
+  line-height: normal;
+  text-align: center;
 }
 
 .search-button {
