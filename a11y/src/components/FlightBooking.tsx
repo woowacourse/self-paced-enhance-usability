@@ -1,37 +1,82 @@
-import { useState } from "react";
+import './FlightBooking.css';
 
-import "./FlightBooking.css";
+import { useState } from 'react';
 
 const MAX_PASSENGERS = 3;
 
 const FlightBooking = () => {
-  const [adultCount, setAdultCount] = useState(1);
+  const [count, setCount] = useState<number>(0);
+  const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
+  const [tip, setTip] = useState('');
 
-  const incrementCount = () => {
-    setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
+  const increment = () => {
+    if (count === 3) return;
+    setCount(prevCount => prevCount + 1);
+
+    if (count + 1 === 3) setTip('최대 승객 수에 도달했습니다.');
+    else setTip('');
   };
 
-  const decrementCount = () => {
-    setAdultCount((prev) => Math.max(1, prev - 1));
+  const decrement = () => {
+    if (count === 0) return;
+    setCount(prevCount => prevCount - 1);
+
+    if (count - 1 === 0) setTip('최소 승객 수에 도달했습니다.');
+    else setTip('');
+  };
+
+  const toggleTooltip = (event: MouseEvent<HTMLDivElement>) => {
+    setIsTooltipVisible(!isTooltipVisible);
   };
 
   return (
-    <div className="flight-booking">
-      <h2 className="heading-2-text">항공권 예매</h2>
-      <div className="passenger-count">
-        <span className="body-text">성인</span>
-        <div className="counter">
-          <button className="button-text" onClick={decrementCount}>
+    <>
+      <section className='spinButtonContainer'>
+        <div>
+          <h1>승객 선택</h1>
+          <div className='spinButtonLabel'>
+            <label>성인</label>
+            <div
+              className='helpIcon'
+              onMouseEnter={toggleTooltip}
+              onMouseLeave={toggleTooltip}
+            >
+              ?
+              {isTooltipVisible && (
+                <span className='tooltip'>
+                  최대 인원수는 3명까지 가능합니다
+                </span>
+              )}
+            </div>
+          </div>
+          <button
+            onClick={decrement}
+            className='spinButton'
+            aria-label='성인 승객 감소'
+          >
             -
           </button>
-          <span>{adultCount}</span>
-          <button className="button-text" onClick={incrementCount}>
+          <input
+            type='text'
+            role='spinbutton'
+            readOnly
+            className='spinButtonInput'
+            aria-live='polite'
+            value={count}
+          />
+          <button
+            onClick={increment}
+            className='spinButton'
+            aria-label='성인 승객 증가'
+          >
             +
           </button>
         </div>
+      </section>
+      <div role='alert' className='visually-hidden' aria-live='polite'>
+        {tip}
       </div>
-      <button className="search-button">항공편 검색</button>
-    </div>
+    </>
   );
 };
 
