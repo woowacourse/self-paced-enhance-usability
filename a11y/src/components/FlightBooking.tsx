@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 import "./FlightBooking.css";
 
@@ -8,10 +9,14 @@ const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(1);
 
   const incrementCount = () => {
+    if (adultCount >= MAX_PASSENGERS)
+      toast.error("최대 승객수에 도달했습니다.");
+
     setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
   };
 
   const decrementCount = () => {
+    if (adultCount <= 1) toast.error("최소 1명의 승객이 필요합니다.");
     setAdultCount((prev) => Math.max(1, prev - 1));
   };
 
@@ -21,11 +26,19 @@ const FlightBooking = () => {
       <div className="passenger-count">
         <span className="body-text">성인</span>
         <div className="counter">
-          <button className="button-text" onClick={decrementCount}>
+          <button
+            className="button-text"
+            onClick={decrementCount}
+            aria-label="성인 승객 감소"
+          >
             -
           </button>
-          <span>{adultCount}</span>
-          <button className="button-text" onClick={incrementCount}>
+          <span aria-live="polite">{adultCount}</span>
+          <button
+            className="button-text"
+            onClick={incrementCount}
+            aria-label="성인 승객 증가"
+          >
             +
           </button>
         </div>
