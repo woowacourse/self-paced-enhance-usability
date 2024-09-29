@@ -34,12 +34,18 @@
   width: 30px;
   height: 30px;
   border-radius: 16px;
-  border: 1px solid #C0C0C0;
+  border: 1px solid #c0c0c0;
   background-color: #fff;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.button-text.disabled {
+  background-color: #cccccc;
+  color: #cccccc;
+  cursor: not-allowed;
 }
 
 .counter span {
@@ -60,4 +66,16 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
