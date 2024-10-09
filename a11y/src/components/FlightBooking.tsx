@@ -1,37 +1,89 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 
 import "./FlightBooking.css";
 
 const MAX_PASSENGERS = 3;
+const MIN_PASSENGERS = 1;
+const STEP = 1;
+
+const COUNT_ERROR_MESSAGE = {
+  min: "최소 승객 수에 도달했습니다",
+  max: "최대 승객 수에 도달했습니다",
+};
 
 const FlightBooking = () => {
-  const [adultCount, setAdultCount] = useState(1);
+  const [adultCount, setAdultCount] = useState(MIN_PASSENGERS);
+  const [countError, setCountError] = useState<
+    keyof typeof COUNT_ERROR_MESSAGE | undefined
+  >(undefined);
+
+  const formId = `passenger-count-form-${useId()}`;
+
+  const updateCountError = (count: number) => {
+    if (count > MAX_PASSENGERS) {
+      return setCountError("max");
+    }
+    if (count < MIN_PASSENGERS) {
+      return setCountError("min");
+    }
+    return setCountError(undefined);
+  };
 
   const incrementCount = () => {
-    setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
+    setAdultCount(prev => {
+      const newCount = prev + STEP;
+      updateCountError(newCount);
+
+      return Math.min(MAX_PASSENGERS, newCount);
+    });
   };
 
   const decrementCount = () => {
-    setAdultCount((prev) => Math.max(1, prev - 1));
+    setAdultCount(prev => {
+      const newCount = prev - STEP;
+      updateCountError(newCount);
+
+      return Math.max(MIN_PASSENGERS, newCount);
+    });
   };
 
   return (
-    <div className="flight-booking">
-      <h2 className="heading-2-text">항공권 예매</h2>
-      <div className="passenger-count">
-        <span className="body-text">성인</span>
+    <section className="flight-booking">
+      <h1 className="heading-1-text">항공권 예매</h1>
+      <form id={formId} className="passenger-count">
+        <h2 className="body-text">성인</h2>
         <div className="counter">
-          <button className="button-text" onClick={decrementCount}>
+          <button
+            type="button"
+            className="button-text"
+            aria-label="성인 승객 감소"
+            onClick={decrementCount}
+          >
             -
           </button>
-          <span>{adultCount}</span>
-          <button className="button-text" onClick={incrementCount}>
+          <output aria-live="polite" aria-atomic="false">
+            {adultCount}
+          </output>
+          <button
+            type="button"
+            className="button-text"
+            aria-label="성인 승객 증가"
+            onClick={incrementCount}
+          >
             +
           </button>
         </div>
+      </form>
+      <div className="count-error-message-wrapper">
+        <p className={countError ? "" : "visually-hidden"} role="status">
+          {countError && COUNT_ERROR_MESSAGE[countError]}
+        </p>
       </div>
-      <button className="search-button">항공편 검색</button>
-    </div>
+
+      <button form={formId} type="submit" className="search-button">
+        항공편 검색
+      </button>
+    </section>
   );
 };
 
