@@ -15,3 +15,9 @@
 ## Step 3: 버튼 접근성 향상시키기
 
 - [x] `FlightBooking` 컴포넌트에 `button` 요소 `aria-label` 속성 추가
+
+## Step 4: 변경 사항에 대한 실시간 알림 추가하기
+
+- [x] `FlightBooking` 컴포넌트에 `span` 요소 `aria-live` 속성 추가
+  - `polite`: 현재 스크린 리더가 다른 작업을 수행하고 있다면, 해당 작업이 완료된 후 콘텐츠 변경 사항을 알림
+  - `assertive`: 콘텐츠 변경이 발생하면 현재 스크린 리더의 작업 여부와 상관없이 즉시 사용자에게 알림
