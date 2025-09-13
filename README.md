@@ -6,8 +6,12 @@
 
 ## Step 1: 언어 설정하기
 
-- [x] index.html 파일에 html 태그 lang 속성에 lang='ko' 로 변경
+- [x] `index.html` 파일에 html 태그 lang 속성에 `lang='ko'` 로 변경
 
 ## Step 2: 시맨틱 태그 사용하기
 
-- [x] App.tsx 파일에 시멘틱 태그 적용
+- [x] `App.tsx` 파일에 시멘틱 태그 적용
+
+## Step 3: 버튼 접근성 향상시키기
+
+- [x] `FlightBooking` 컴포넌트에 `button` 요소 `aria-label` 속성 추가
