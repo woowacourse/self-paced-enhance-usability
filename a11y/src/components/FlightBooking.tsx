@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import "./FlightBooking.css";
+import './FlightBooking.css';
 
 const MAX_PASSENGERS = 3;
 
