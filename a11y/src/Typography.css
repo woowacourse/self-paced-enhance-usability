@@ -32,3 +32,8 @@
   font-weight: 500;
   line-height: 100%;
 }
+
+.button-text:disabled {
+  color: #c0c0c042;
+  cursor: not-allowed;
+}
