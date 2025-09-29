@@ -24,6 +24,7 @@ const FlightBooking = () => {
           <button
             className="button-text"
             onClick={decrementCount}
+            aria-label="성인 승객 감소"
           >
             -
           </button>
@@ -31,6 +32,7 @@ const FlightBooking = () => {
           <button
             className="button-text"
             onClick={incrementCount}
+            aria-label="성인 승객 증가"
           >
             +
           </button>
