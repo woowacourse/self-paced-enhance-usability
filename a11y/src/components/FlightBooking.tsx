@@ -28,7 +28,7 @@ const FlightBooking = () => {
           >
             -
           </button>
-          <span>{adultCount}</span>
+          <span aria-live="polite">{adultCount}</span>
           <button
             className="button-text"
             onClick={incrementCount}
