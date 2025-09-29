@@ -49,12 +49,14 @@ const FlightBooking = () => {
         </div>
       </div>
       <button className="search-button">항공편 검색</button>
-      <span
-        className="visually-hidden"
-        role="alert"
-      >
-        {ariaLiveMessage}
-      </span>
+      {ariaLiveMessage && (
+        <p
+          className="visually-hidden"
+          role="alert"
+        >
+          {ariaLiveMessage}
+        </p>
+      )}
     </div>
   )
 }
